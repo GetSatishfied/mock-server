@@ -9,8 +9,6 @@ const middlewares = jsonServer.defaults()
 server.use(
     cors({
         origin: true,
-        credentials: true,
-        preflightContinue: false,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     })
 );
@@ -18,7 +16,7 @@ server.use(jsonServer.bodyParser())
 server.use(middlewares)
 server.use(router)
 
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 
 server.listen(PORT, () => {
   console.log(`JSON Server is running on http://localhost:${PORT}`)
